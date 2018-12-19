@@ -28,7 +28,7 @@ var bundle ={
 
 		//
 		var member_user = null;
-		var custom_path = path.join(__dirname, '../../../hyperledger/fabric-samples/fabcar/hfc-key-store')
+		var custom_path = path.join(__dirname, '../../Network/PRS/hfc-key-store')
 		var store_path = path.normalize(custom_path);
 		console.log('Store path:'+store_path);
 		var tx_id = null;
@@ -61,8 +61,8 @@ var bundle ={
 			// queryAllCars chaincode function - requires no arguments , ex: args: [''],
 			const request = {
 				//targets : --- letting this default to the peers assigned to the channel
-				chaincodeId: 'fabcar',
-				fcn: 'queryAllCars',
+				chaincodeId: 'PRS',
+				fcn: 'queryAllProducts',
 				args: ['']
 			};
 
