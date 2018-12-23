@@ -2,14 +2,21 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  button(id='myButton') Ready to be clicked
+  button(id='queryAll') Query all
+  p(id='text_area')
+  form(id="addProductForm")
+    input(type="text", name = "Reference", placeholder="Reference")
+    input(type="text", name ="Type", placeholder="Type", size="15")
+    input(type="text", name ="Brand", placeholder="Brand")
+    input(type="text", name ="Model", placeholder="Model")
+    input(type="text", name ="Volume/Lumens", placeholder="Volume/Lumens", size="7")
+    input(type="text", name ="Watts", placeholder="Watts", size="5")
+    br
+    input(type="submit", value="Add product")
+  p(id='add_area')
 
 block Button1
   script(src ="/javascripts/Button1.js")
 
 
-  
 
-block Button2
-  p #{carData}
