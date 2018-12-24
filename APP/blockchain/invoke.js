@@ -5,7 +5,7 @@
  */
 var bundle ={
 
-	addProduct:function (Arr) {
+	invoke:function (func, Arr) {
 
 	  return new Promise(resolve => {
 	 	
@@ -67,14 +67,29 @@ var bundle ={
 			for (var i = 0; i < 6; i++){
 				parameters[i] = process.argv.slice(i + 2)
 			}*/
-			var request = {//Creates a refrigerator
-				//targets: let default to the peer assigned to the client
+			if (func == 'createProduct'){	
+				var request = {//Creates a product
+					//targets: let default to the peer assigned to the client
+					chaincodeId: 'PRS',
+					fcn: 'createProduct',
+					args: [Arr[0],Arr[1],Arr[2],Arr[3],Arr[4],Arr[5]],
+					chainId: 'mychannel',
+					txId: tx_id
+				};
+			}
+			if (func == 'changeProductStatus'){	
+				var request = {//Changes the status of a product (acceptance into a market)
+				//args[0] = key or reference
+		    	//args[1] = 'accepted', 'rejected', 'pending'
+		    	//args[2 .. n] = market that is now accepting or rejecting or putting on hold
+		    	// the product
 				chaincodeId: 'PRS',
-				fcn: 'createProduct',
-				args: [Arr[0],Arr[1],Arr[2],Arr[3],Arr[4],Arr[5]],
+				fcn: 'changeProductStatus',
+				args: ['LIGHTING2','accepted','europe','canada'],
 				chainId: 'mychannel',
 				txId: tx_id
 			};
+			}
 
 			/*var request = {//Changes the status of a product (acceptance into a market)
 				//args[0] = key or reference
