@@ -14,7 +14,7 @@ function XHR1(method, address,ID){
   req.send();
 }
 
-/*function XHR2(method, address, ID, data[]){
+function XHR2(method, address, ID){
   var req = new XMLHttpRequest();
   req.open(method,address);
   req.onreadystatechange = function(){
@@ -23,13 +23,13 @@ function XHR1(method, address,ID){
       }
   }
   req.send();
-}*/
+}
 
 $( "#addProductForm" ).submit(function( event ) {
   var Form = $( "#addProductForm" ).serializeArray();
   var Arr = [Form[0].value,Form[1].value,Form[2].value,Form[3].value,Form[4].value,Form[5].value];
   // array of string values of the form 
-  //XHR2("POST","/addProduct","add_area", Arr);
+  XHR2("POST","/addProduct","add_area");
   //var test = JSON.stringify(Form[0]);
   //window.alert(Form[0].value);
   //alert(Arr[1]);

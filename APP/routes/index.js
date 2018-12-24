@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 var query = require('../blockchain/query');//require
-
+var invoke = require('../blockchain/invoke');
 
 
 /* GET home page. */
@@ -18,25 +18,24 @@ router.get('/clicke', (req, res) => {
   var bunchOfCarData = await query.queryCar();
   res.writeHead(200,"OK",{"Content-Type":"text/html"});
   res.end(bunchOfCarData);
-  
   }
 
   f1(req ,res);
   
 });
 
-/*router.get('/addProduct', (req, res) => {
+router.post('/addProduct', (req, res) => {
   
   async function f1(req, res) {
-  var bunchOfCarData = await query.queryCar();
+  var response = await invoke.addProduct();
   res.writeHead(200,"OK",{"Content-Type":"text/html"});
-  res.end(bunchOfCarData);
+  res.end(response);
   
   }
 
   f1(req ,res);
   
-});*/
+});
 
 
 
