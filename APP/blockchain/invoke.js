@@ -5,9 +5,11 @@
  */
 var bundle ={
 
-	addProduct:function () {
+	addProduct:function (Arr) {
 
 	  return new Promise(resolve => {
+	 	
+
 
 
 		var Fabric_Client = require('fabric-client');
@@ -65,12 +67,11 @@ var bundle ={
 			for (var i = 0; i < 6; i++){
 				parameters[i] = process.argv.slice(i + 2)
 			}*/
-
 			var request = {//Creates a refrigerator
 				//targets: let default to the peer assigned to the client
 				chaincodeId: 'PRS',
 				fcn: 'createProduct',
-				args: ['REFRIGERATOR4','refrigerator','HyperCooler','CT4','1','3400'],
+				args: [Arr[0],Arr[1],Arr[2],Arr[3],Arr[4],Arr[5]],
 				chainId: 'mychannel',
 				txId: tx_id
 			};

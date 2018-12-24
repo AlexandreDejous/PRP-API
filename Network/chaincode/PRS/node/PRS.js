@@ -88,25 +88,37 @@ let Chaincode = class {
       brand: 'IglooAtHome',
       model: 'Prime',
       volume: '0.1',
-      annualConsumption: '150'
+      annualConsumption: '150',
+      accepted: [],
+      pending:[],
+      rejected: []
     });
     refrigerators.push({
       brand: 'EnergyLossCo',
       model: 'ZT-3450',
       volume: '0.4',
-      annualConsumption: '2000'
+      annualConsumption: '2000',
+      accepted: [],
+      pending:[],
+      rejected: []
     });
     refrigerators.push({
       brand: 'Simenes',
       model: 'FoodKeeper-C6',
       volume: '0.3',
-      annualConsumption: '700'
+      annualConsumption: '700',
+      accepted: [],
+      pending:[],
+      rejected: []
     });
     refrigerators.push({
       brand: 'IglooAtHome',
       model: 'Secundus',
       volume: '0.15',
-      annualConsumption: '175'
+      annualConsumption: '175',
+      accepted: [],
+      pending:[],
+      rejected: []
     });
     for (let i = 0; i < refrigerators.length; i++) {
       refrigerators[i].docType = 'refrigerator';
@@ -127,21 +139,28 @@ let Chaincode = class {
     //if (args.length != 6) {
     //  throw new Error('Incorrect number of arguments. Expecting 6');
     //}
-    if (args[1]='refrigerator'){
+    if (args[1]=='refrigerator'){
       var product = {
       docType: 'refrigerator',
       brand: args[2],
       model: args[3],
       volume: args[4],
-      annualConsumption: args[5]
+      annualConsumption: args[5],
+      accepted: [],
+      pending:[],
+      rejected: []
       };
-    }else if (args[1]='lighting'){
+    }
+    if (args[1]=='lighting'){
       var product = {
       docType: 'lighting',
       brand: args[2],
       model: args[3],
       lumens: args[4],
-      watts: args[5]
+      watts: args[5],
+      accepted: [],
+      pending:[],
+      rejected: []
       };
 
     }
@@ -154,46 +173,13 @@ let Chaincode = class {
 
 
 
-  /*async acceptProduct(stub, args, thisClass) {
-    console.info('============= START : changeProductStatus ===========');
-    //args[0] = key or reference
-    //args[1 .. n] = market that is now accepting the product
 
-    if (args.length != 2) {
-      throw new Error('Incorrect number of arguments. Expecting 2');
-    }
-
-    let ProductAsBytes = await stub.getState(args[0]);
-    let product = JSON.parse(ProductAsBytes);
-
-    for (var i = 1; i < args.length; i++){
-      var alreadyAccepted = false;
-      for (var j = 0; j < product.accepted.length; j++){
-        if (product.accepted[j]==args[i]){
-          console.info(product.accepted[j] + ' has already accepted ' + args[0]);
-          alreadyAccepted = true;
-        }
-        if (product.pending[j]==args[i]){
-          product.pending.splice(j,1);
-        }
-        if (product.rejected[j]==args[i]){
-          product.rejected.splice(j,1);
-        }
-      }
-      if (!alreadyAccepted){
-        product.accepted.push(args[i]);
-      }
-    }
-
-    await stub.putState(args[0], Buffer.from(JSON.stringify(product)));
-    console.info('============= END : changeCarOwner ===========');
-  }*/
 
   async changeProductStatus(stub, args, thisClass) {
     console.info('============= START : changeProductStatus ===========');
     //args[0] = key or reference
     //args[1] = 'accepted', 'rejected', 'pending'
-    //args[2 .. n] = market that is now accepting the product
+    //args[2 .. n] = market that is now accepting or rejecting or putting on hold the product
 
     /*if (args.length != 2) {
       throw new Error('Incorrect number of arguments. Expecting 2');

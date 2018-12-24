@@ -25,9 +25,9 @@ router.get('/clicke', (req, res) => {
 });
 
 router.post('/addProduct', (req, res) => {
-  
   async function f1(req, res) {
-  var response = await invoke.addProduct();
+  	
+  var response = await invoke.addProduct(req.body);
   res.writeHead(200,"OK",{"Content-Type":"text/html"});
   res.end(response);
   
