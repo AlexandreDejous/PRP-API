@@ -37,6 +37,19 @@ router.post('/addProduct', (req, res) => {
   
 });
 
+router.post('/changeStatus', (req, res) => {
+  async function f1(req, res) {
+
+  var response = await invoke.invoke('changeProductStatus', req.body);
+  res.writeHead(200,"OK",{"Content-Type":"text/html"});
+  res.end(response);
+  
+  }
+
+  f1(req ,res);
+  
+});
+
 
 
 

@@ -14,7 +14,16 @@ block content
     br
     input(type="submit", value="Add product")
   p(id='add_area')
-
+  form(id="changeStatusForm")
+    select(name="status")
+      option(value="accepted") Accepted
+      option(value="pending") Pending
+      option(value="rejected") Rejected
+    input(type="text", name ="reference", placeholder="Reference")
+    input(type="text", name ="market", placeholder="Market")
+    br
+    input(type="submit", value="Change status")
+  p(id='status_area')
 block Button1
   script(src ="/javascripts/Button1.js")
 

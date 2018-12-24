@@ -38,8 +38,19 @@ $( "#addProductForm" ).submit(function( event ) {
     return;
   }*/
   event.preventDefault();
+});
 
-
+$( "#changeStatusForm" ).submit(function( event ) {
+  var Form = $( "#changeStatusForm" ).serializeArray();
+  var Obj = {0:Form[1].value,1:Form[0].value,2:Form[2].value};
+  // array of string values of the form 
+  XHRPOST("/changeStatus","status_area", Obj);
+  /*if ( $( "input:first" ).val() === "correct" ) {
+    alert("correct");
+    event.preventDefault();
+    return;
+  }*/
+  event.preventDefault();
 });
 
 const button = document.getElementById('queryAll');

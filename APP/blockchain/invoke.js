@@ -85,7 +85,7 @@ var bundle ={
 		    	// the product
 				chaincodeId: 'PRS',
 				fcn: 'changeProductStatus',
-				args: ['LIGHTING2','accepted','europe','canada'],
+				args: [Arr[0],Arr[1],Arr[2]],
 				chainId: 'mychannel',
 				txId: tx_id
 			};
