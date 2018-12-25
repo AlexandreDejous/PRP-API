@@ -44,18 +44,18 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 		throw new Error('Failed to get user1.... run registerUser.js');
 	}
 
-	/*const request = {//Queries the product with the reference : REFRIGERATOR1
+	const request = {//Queries the product with the reference : REFRIGERATOR1
 		//targets : --- letting this default to the peers assigned to the channel
 		chaincodeId: 'PRS',
 		fcn: 'queryProductByKey',
 		args: ['REFRIGERATOR1']
-	};*/
-	const request = {//queries all products stored in the blockchain
+	};
+	/*const request = {//queries all products stored in the blockchain
 		
 		chaincodeId: 'PRS',
 		fcn: 'queryAllProducts',
 		args: ['']
-	};
+	};*/
 
 	// send the query proposal to the peer
 	return channel.queryByChaincode(request);

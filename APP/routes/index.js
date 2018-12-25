@@ -12,12 +12,24 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Demo' });
   
 });
-router.get('/clicke', (req, res) => {
+router.get('/queryAll', (req, res) => {
   
   async function f1(req, res) {
-  var bunchOfCarData = await query.queryCar();
+  var productsData = await query.query('queryAllProducts'/*,[]*/);
   res.writeHead(200,"OK",{"Content-Type":"text/html"});
-  res.end(bunchOfCarData);
+  res.end(productsData);
+  }
+
+  f1(req ,res);
+  
+});
+
+router.post('/searchProduct', (req, res) => {
+  
+  async function f1(req, res) {
+  var productsData = await query.query('queryProductByKey',req.body[0]);
+  res.writeHead(200,"OK",{"Content-Type":"text/html"});
+  res.end(productsData);
   }
 
   f1(req ,res);
@@ -39,7 +51,6 @@ router.post('/addProduct', (req, res) => {
 
 router.post('/changeStatus', (req, res) => {
   async function f1(req, res) {
-
   var response = await invoke.invoke('changeProductStatus', req.body);
   res.writeHead(200,"OK",{"Content-Type":"text/html"});
   res.end(response);

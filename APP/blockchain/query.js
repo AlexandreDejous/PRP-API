@@ -4,9 +4,11 @@
  */
 var bundle ={
 
-	queryCar:function () {
+	query:function (func, Data) {
 
 	  return new Promise(resolve => {
+
+	  	
 
 		var Fabric_Client = require('fabric-client');
 		var path = require('path');
@@ -52,14 +54,30 @@ var bundle ={
 				throw new Error('Failed to get user1.... run registerUser.js');
 			}
 
-			// queryCar chaincode function - requires 1 argument, ex: args: ['CAR4'],
-			// queryAllCars chaincode function - requires no arguments , ex: args: [''],
-			const request = {
-				//targets : --- letting this default to the peers assigned to the channel
+            var request = {};
+			if(func == 'queryProductByKey'){
+				request = {//Queries the product with the specified reference
+					//targets : --- letting this default to the peers assigned to the channel
+					chaincodeId: 'PRS',
+					fcn: 'queryProductByKey',
+					args: [Data]
+				};
+			}
+
+			if(func == 'queryAllProducts'){
+				request = {
+					
+					chaincodeId: 'PRS',
+					fcn: 'queryAllProducts',
+					args: ['']
+				};
+			}
+			/*const request = {//queries all products stored in the blockchain
+				
 				chaincodeId: 'PRS',
 				fcn: 'queryAllProducts',
 				args: ['']
-			};
+			};*/			
 
 			// send the query proposal to the peer
 			return channel.queryByChaincode(request);

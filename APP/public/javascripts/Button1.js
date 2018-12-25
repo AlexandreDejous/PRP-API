@@ -3,7 +3,7 @@ console.log('Client-side code running');
 //method = "POST" , "GET", etc
 //adress = "/clicke" , "/clicked", etc
 //ID = "HTML_ID"
-function XHR1(address,ID){
+function XHR1(address, ID){
   var req = new XMLHttpRequest();
   req.open("GET",address);
   req.onreadystatechange = function(){
@@ -53,10 +53,23 @@ $( "#changeStatusForm" ).submit(function( event ) {
   event.preventDefault();
 });
 
+$( "#searchProductForm" ).submit(function( event ) {
+  var Form = $( "#searchProductForm" ).serializeArray();
+  var Obj = {0:Form[0].value};
+  //string value of the form 
+  XHRPOST("/searchProduct","search_area", Obj);
+  /*if ( $( "input:first" ).val() === "correct" ) {
+    alert("correct");
+    event.preventDefault();
+    return;
+  }*/
+  event.preventDefault();
+});
+
 const button = document.getElementById('queryAll');
 button.addEventListener('click', function(e) {
   console.log('button was clicked');
-  XHR1("/clicke","text_area");
+  XHR1("/queryAll","text_area");
 
     
 }

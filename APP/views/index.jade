@@ -19,11 +19,15 @@ block content
       option(value="accepted") Accepted
       option(value="pending") Pending
       option(value="rejected") Rejected
-    input(type="text", name ="reference", placeholder="Reference")
-    input(type="text", name ="market", placeholder="Market")
+    input(type="text", name ="Reference", placeholder="Reference")
+    input(type="text", name ="Market", placeholder="Market")
     br
     input(type="submit", value="Change status")
   p(id='status_area')
+  form(id="searchProductForm")
+    input(type="text", name = "Reference", placeholder="Reference")
+    input(type="submit", value="Search product")
+  p(id='search_area')
 block Button1
   script(src ="/javascripts/Button1.js")
 

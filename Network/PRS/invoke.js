@@ -77,7 +77,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     	//accepts the lighting product "LIGHTING2" into europe and canada
 		chaincodeId: 'PRS',
 		fcn: 'changeProductStatus',
-		args: ['Z1','rejected','europe'],
+		args: ['Z2','accepted','europe'],
 		chainId: 'mychannel',
 		txId: tx_id
 	};
