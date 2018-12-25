@@ -28,5 +28,5 @@ From the PRS folder again, issue `./startFabric.sh`.
 
 * Open a web browser and access localhost:3000 .
 
-* You can now query all products, add a new product (the "type" field must be either filled with refrigerator or lighting), change the status of a product and search for a product by typing its reference. 
+* You can now query all products, add a new product (the "type" field must be either filled with refrigerator or lighting), modify a product, change the status of a product, search for a product and get the history of changes for a product.
 

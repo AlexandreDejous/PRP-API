@@ -41,6 +41,16 @@ block content
     input(type="text", name = "Reference", placeholder="Reference")
     input(type="submit", value="Get history")
   p(id='history_area')
+  p(id='line')
+  ul(id='instructions')
+    li Query all: Queries all products
+    li Add product: Adds a product. Fields "Reference" and "Type" are required. Issuing this request with the reference of an existing product will allow you to change its type and all its attribute, but its entire status will be reset to blank.
+    li Modify product: Modifies a product. Field "Reference" is required. Issuing this request will allow you to change all its attributes except its type and will keep unchanged its status.
+    li Change status: Changes the status of a product (its acceptance or not into a market). Field "Reference" is required.
+    li Search product: Queries a given product identified by its reference. Field "Reference" is required.
+    li Get history: Queries the history of changes for a given product identified by its reference. Field "Reference" is required.
+
+  p *For the moment, the only types are "refrigerator" and "lighting"
 
 block scripts
   script(src ="/javascripts/request.js")
