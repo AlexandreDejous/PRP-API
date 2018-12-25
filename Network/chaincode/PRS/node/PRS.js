@@ -204,7 +204,7 @@ let Chaincode = class {
 
     for (var i = 2; i < args.length; i++){
       var alreadyChanged = false;
-      for (var j = 0; j < lengthArray; j++){
+      for (var j = 0; j < product.accepted.length; j++){
         if (product.accepted[j]==args[i]){
           //if product already accepted for this market
           if(args[1]=='accepted'){
@@ -215,11 +215,14 @@ let Chaincode = class {
 
           }else{
             product.accepted.splice(j,1);
+            j--;
             //else delete the market id from the 'accepted' section of the product
           }
 
           
         }
+      }
+            for (var j = 0; j < product.pending.length; j++){
         if (product.pending[j]==args[i]){
           //if product already on hold for this market
           if(args[1]=='pending'){
@@ -230,9 +233,12 @@ let Chaincode = class {
 
           }else{
             product.pending.splice(j,1);
+            j--;
             //else delete the market id from the 'pending' section of the product
           }
         }
+      }
+      for (var j = 0; j < product.rejected.length; j++){
         if (product.rejected[j]==args[i]){
           //if product already rejected
           if(args[1]=='rejected'){
@@ -243,6 +249,7 @@ let Chaincode = class {
 
           }else{
             product.rejected.splice(j,1);
+            j--;
             //else delete the market id from the 'reject' section of the product
           }
         }
