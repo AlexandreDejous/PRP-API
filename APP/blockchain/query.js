@@ -4,7 +4,9 @@
  */
 var bundle ={
 
-	query:function (func, Data) {
+	query:function (func, Data) {//func is the blockchain function to send a request to
+		                         //Data is an optional field which must be used if we're
+		                         //querying a particular products or type of products
 
 	  return new Promise(resolve => {
 
@@ -64,20 +66,14 @@ var bundle ={
 				};
 			}
 
-			if(func == 'queryAllProducts'){
+			if(func == 'queryAllProducts'){//queries all product by alphanumerical order of the reference/key 
 				request = {
 					
 					chaincodeId: 'PRS',
 					fcn: 'queryAllProducts',
 					args: ['']
 				};
-			}
-			/*const request = {//queries all products stored in the blockchain
-				
-				chaincodeId: 'PRS',
-				fcn: 'queryAllProducts',
-				args: ['']
-			};*/			
+			}		
 
 			// send the query proposal to the peer
 			return channel.queryByChaincode(request);

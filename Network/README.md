@@ -1,3 +1,4 @@
+For Cli usage (this git repo contains also an api and a front-end which allows us to send requests to the network easily (see README.md which is in PRP-API)) :
 
 ## Product Registration System Blockchain
 

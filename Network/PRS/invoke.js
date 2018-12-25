@@ -51,14 +51,6 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	tx_id = fabric_client.newTransactionID();
 	console.log("Assigning transaction_id: ", tx_id._transaction_id);
 
-	//bit of code to gather arguments if this script purpose is to gather arguments
-	//via the CLI
-
-	/*var parameters = [];
-	for (var i = 0; i < 6; i++){
-		parameters[i] = process.argv.slice(i + 2)
-	}*/
-
 	/*var request = {//Creates a refrigerator
 		//targets: let default to the peer assigned to the client
 		chaincodeId: 'PRS',

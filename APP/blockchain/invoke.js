@@ -60,13 +60,6 @@ var bundle ={
 			tx_id = fabric_client.newTransactionID();
 			console.log("Assigning transaction_id: ", tx_id._transaction_id);
 
-			//bit of code to gather arguments if this script purpose is to gather arguments
-			//via the CLI
-
-			/*var parameters = [];
-			for (var i = 0; i < 6; i++){
-				parameters[i] = process.argv.slice(i + 2)
-			}*/
 			if (func == 'createProduct'){	
 				var request = {//Creates a product
 					//targets: let default to the peer assigned to the client
@@ -83,27 +76,13 @@ var bundle ={
 		    	//args[1] = 'accepted', 'rejected', 'pending'
 		    	//args[2 .. n] = market that is now accepting or rejecting or putting on hold
 		    	// the product
-				chaincodeId: 'PRS',
-				fcn: 'changeProductStatus',
-				args: [Arr[0],Arr[1],Arr[2]],
-				chainId: 'mychannel',
-				txId: tx_id
-			};
+					chaincodeId: 'PRS',
+					fcn: 'changeProductStatus',
+					args: [Arr[0],Arr[1],Arr[2]],
+					chainId: 'mychannel',
+					txId: tx_id
+				};
 			}
-
-			/*var request = {//Changes the status of a product (acceptance into a market)
-				//args[0] = key or reference
-		    	//args[1] = 'accepted', 'rejected', 'pending'
-		    	//args[2 .. n] = market that is now accepting or rejecting or putting on hold
-		    	// the product
-
-		    	//accepts the lighting product "LIGHTING2" into europe and canada
-				chaincodeId: 'PRS',
-				fcn: 'changeProductStatus',
-				args: ['LIGHTING2','accepted','europe','canada'],
-				chainId: 'mychannel',
-				txId: tx_id
-			};*/
 
 			// send the transaction proposal to the peers
 			return channel.sendTransactionProposal(request);

@@ -187,20 +187,7 @@ let Chaincode = class {
 
     let ProductAsBytes = await stub.getState(args[0]);
     let product = JSON.parse(ProductAsBytes);
-    var lengthArray = 0;
-    if(args[1]=='accepted'){
 
-      lengthArray = product.accepted.length
-
-    }else if(args[1]=='rejected'){
-
-      lengthArray = product.rejected.length
-
-    }else if(args[1]=='pending'){
-
-      lengthArray = product.pending.length
-
-    }
 
     for (var i = 2; i < args.length; i++){
       var alreadyChanged = false;
@@ -306,22 +293,6 @@ let Chaincode = class {
     let queryString = {};
     queryString.selector = {};
     queryString.selector.docType = doctype;
-    let method = thisClass['getQueryResultForQueryString'];
-    let queryResults = await method(stub, JSON.stringify(queryString), thisClass);
-    return queryResults; //shim.success(queryResults);
-  }
-
-  async queryLightingByBrand(stub, args, thisClass) {
-
-    if (args.length < 1) {
-      throw new Error('Incorrect number of arguments. Expecting brand name.')
-    }
-
-    let brand = args[0]//.toLowerCase();
-    let queryString = {};
-    queryString.selector = {};
-    queryString.selector.docType = 'lighting';
-    queryString.selector.brand = brand;
     let method = thisClass['getQueryResultForQueryString'];
     let queryResults = await method(stub, JSON.stringify(queryString), thisClass);
     return queryResults; //shim.success(queryResults);

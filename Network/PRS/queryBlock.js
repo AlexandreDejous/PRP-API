@@ -87,3 +87,7 @@ async function f1(){
 
 f1();
 
+//when querying a block with a valid number, returns undefined, when querying a block
+//with an invalid number (unreasonnably long regarding the little number of transactions
+//which has already been commited), returns an error stating that the block does not 
+//exists yet

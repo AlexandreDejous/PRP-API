@@ -32,11 +32,6 @@ $( "#addProductForm" ).submit(function( event ) {
   var Obj = {0:Form[0].value,1:Form[1].value,2:Form[2].value,3:Form[3].value,4:Form[4].value,5:Form[5].value};
   // array of string values of the form 
   XHRPOST("/addProduct","add_area", Obj);
-  /*if ( $( "input:first" ).val() === "correct" ) {
-    alert("correct");
-    event.preventDefault();
-    return;
-  }*/
   event.preventDefault();
 });
 
@@ -45,11 +40,6 @@ $( "#changeStatusForm" ).submit(function( event ) {
   var Obj = {0:Form[1].value,1:Form[0].value,2:Form[2].value};
   // array of string values of the form 
   XHRPOST("/changeStatus","status_area", Obj);
-  /*if ( $( "input:first" ).val() === "correct" ) {
-    alert("correct");
-    event.preventDefault();
-    return;
-  }*/
   event.preventDefault();
 });
 
@@ -58,11 +48,6 @@ $( "#searchProductForm" ).submit(function( event ) {
   var Obj = {0:Form[0].value};
   //string value of the form 
   XHRPOST("/searchProduct","search_area", Obj);
-  /*if ( $( "input:first" ).val() === "correct" ) {
-    alert("correct");
-    event.preventDefault();
-    return;
-  }*/
   event.preventDefault();
 });
 
