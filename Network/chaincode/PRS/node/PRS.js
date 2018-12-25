@@ -136,9 +136,9 @@ let Chaincode = class {
 
   async createProduct(stub, args, thisClass) {
     console.info('============= START : Create Product ===========');
-    //if (args.length != 6) {
-    //  throw new Error('Incorrect number of arguments. Expecting 6');
-    //}
+    if (args.length != 6) {
+      throw new Error('Incorrect number of arguments. Expecting 6');
+    }
     if (args[1]=='refrigerator'){
       var product = {
       docType: 'refrigerator',
@@ -171,7 +171,31 @@ let Chaincode = class {
     console.info('============= END : Create Product ===========');
   }
 
+  async modifyProduct(stub, args, thisClass) {
+    console.info('============= START : Create Product ===========');
+    if (args.length != 5) {
+      throw new Error('Incorrect number of arguments. Expecting 6');
+    }
+    let ProductAsBytes = await stub.getState(args[0]);
+    let product = JSON.parse(ProductAsBytes);
 
+    if (product.docType == 'refrigerator'){
+	    product.brand = args[1];
+	    product.model = args[2];
+	    product.volume = args[3];
+	    product.annualConsumption = args[4];
+	}
+    if (product.docType == 'lighting'){
+	    product.brand = args[1];
+	    product.model = args[2];
+	    product.lumens = args[3];
+	    product.watts = args[4];
+	}
+    
+    await stub.putState(args[0], Buffer.from(JSON.stringify(product)));
+    //args[0] is the reference of the product, the unique ID for it
+    console.info('============= END : Create Product ===========');
+  }
 
 
 

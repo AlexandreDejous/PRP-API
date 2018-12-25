@@ -70,6 +70,18 @@ var bundle ={
 					txId: tx_id
 				};
 			}
+
+			if (func == 'modifyProduct'){	
+				var request = {//Creates a product
+					//targets: let default to the peer assigned to the client
+					chaincodeId: 'PRS',
+					fcn: 'modifyProduct',
+					args: [Arr[0],Arr[1],Arr[2],Arr[3],Arr[4]],
+					chainId: 'mychannel',
+					txId: tx_id
+				};
+			}
+
 			if (func == 'changeProductStatus'){	
 				var request = {//Changes the status of a product (acceptance into a market)
 				//args[0] = key or reference

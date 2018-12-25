@@ -50,6 +50,19 @@ router.post('/addProduct', (req, res) => {//[0:"<ref>",1:"<type>",2:"<brand>",3:
   
 });
 
+router.post('/modifyProduct', (req, res) => {//[0:"<ref>",1:"<brand>",2:"<model>",3:"<vol/lumens>",4:"<watts/ann.consumpt>"]
+  async function f1(req, res) {
+
+  var response = await invoke.invoke('modifyProduct', req.body);
+  res.writeHead(200,"OK",{"Content-Type":"text/html"});
+  res.end(response);
+  
+  }
+
+  f1(req ,res);
+  
+});
+
 router.post('/changeStatus', (req, res) => {//[0:"<ref>",1:"<accepted/rejected/pending>",2:"<market>"]
   async function f1(req, res) {
   var response = await invoke.invoke('changeProductStatus', req.body);

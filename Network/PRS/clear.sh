@@ -16,3 +16,6 @@ CC_IMAGES=$(docker images | grep dev-$PEER | awk '{print $1}')
 if [ -n "$CC_IMAGES" ]; then
 docker rmi -f $CC_IMAGES
 fi
+
+
+#cleaning procedure, removing the remains of blockchain network

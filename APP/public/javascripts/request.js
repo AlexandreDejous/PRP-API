@@ -35,6 +35,14 @@ $( "#addProductForm" ).submit(function( event ) {
   event.preventDefault();
 });
 
+$( "#modifyProductForm" ).submit(function( event ) {
+  var Form = $( "#modifyProductForm" ).serializeArray();
+  var Obj = {0:Form[0].value,1:Form[1].value,2:Form[2].value,3:Form[3].value,4:Form[4].value};
+  // array of string values of the form 
+  XHRPOST("/modifyProduct","modify_area", Obj);
+  event.preventDefault();
+});
+
 $( "#changeStatusForm" ).submit(function( event ) {
   var Form = $( "#changeStatusForm" ).serializeArray();
   var Obj = {0:Form[1].value,1:Form[0].value,2:Form[2].value};
