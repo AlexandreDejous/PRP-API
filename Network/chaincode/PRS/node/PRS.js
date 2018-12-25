@@ -387,6 +387,21 @@ let Chaincode = class {
     }
   }
 
+  async getHistoryForProduct(stub, args, thisClass) {
+
+    if (args.length < 1) {
+      throw new Error('Incorrect number of arguments. Expecting 1')
+    }
+    let key = args[0];
+    console.info('- start getHistoryForProduct: %s\n', key);
+
+    let resultsIterator = await stub.getHistoryForKey(key);
+    let method = thisClass['getAllResults'];
+    let results = await method(resultsIterator, true);
+
+    return Buffer.from(JSON.stringify(results));
+  }
+
 };
 
 shim.start(new Chaincode());

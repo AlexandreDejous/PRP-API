@@ -37,6 +37,10 @@ block content
     input(type="text", name = "Reference", placeholder="Reference")
     input(type="submit", value="Search product")
   p(id='search_area')
+  form(id="historyForm")
+    input(type="text", name = "Reference", placeholder="Reference")
+    input(type="submit", value="Get history")
+  p(id='history_area')
 
 block scripts
   script(src ="/javascripts/request.js")

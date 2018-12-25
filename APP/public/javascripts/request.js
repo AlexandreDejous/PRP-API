@@ -59,6 +59,14 @@ $( "#searchProductForm" ).submit(function( event ) {
   event.preventDefault();
 });
 
+$( "#historyForm" ).submit(function( event ) {
+  var Form = $( "#historyForm" ).serializeArray();
+  var Obj = {0:Form[0].value};
+  //string value of the form 
+  XHRPOST("/history","history_area", Obj);
+  event.preventDefault();
+});
+
 const button = document.getElementById('queryAll');
 button.addEventListener('click', function(e) {
   console.log('button was clicked');

@@ -75,6 +75,15 @@ var bundle ={
 				};
 			}		
 
+			if(func == 'getHistoryForProduct'){//queries all product by alphanumerical order of the reference/key 
+				request = {
+					
+					chaincodeId: 'PRS',
+					fcn: 'getHistoryForProduct',
+					args: [Data]
+				};
+			}			
+
 			// send the query proposal to the peer
 			return channel.queryByChaincode(request);
 		}).then((query_responses) => {

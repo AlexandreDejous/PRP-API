@@ -37,6 +37,18 @@ router.post('/searchProduct', (req, res) => {//receives an object [0 : "<referen
   
 });
 
+router.post('/history', (req, res) => {//receives an object [0 : "<reference>"]
+  
+  async function f1(req, res) {
+  var productData = await query.query('getHistoryForProduct',req.body[0]);
+  res.writeHead(200,"OK",{"Content-Type":"text/html"});
+  res.end(productData);
+  }
+
+  f1(req ,res);
+  
+});
+
 router.post('/addProduct', (req, res) => {//[0:"<ref>",1:"<type>",2:"<brand>",3:"<model>",4:"<vol/lumens>",5:"<watts/ann.consumpt>"]
   async function f1(req, res) {
 
